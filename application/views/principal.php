@@ -611,7 +611,7 @@
 
 <!-- Image of location/map -->
 <img src="<?=base_url()?>assets/imagenes/map.jpg" class="img-responsive" style="width:100%">
-
+    <!--solo quiero ver si se publica mi rama-->
 
 <!--SELECT2-->
 <script>
