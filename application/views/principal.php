@@ -632,7 +632,7 @@ $(document).ready(function() {
       $('#buscarCurso').append(new Option(nombreCurso, enlace));
     }
   });
-
+  //Indira Pérez?
   // Cuando el usuario selecciona un curso, se despliega automáticamente
   $('#buscarCurso').on('change', function() {
     const target = $(this).val();
