@@ -641,7 +641,7 @@ $(document).ready(function() {
       $('.collapse').collapse('hide');
       // Abre el seleccionado
       $(target).collapse('show');
-
+      //RamaINDI ?
       // Hace scroll hasta el curso seleccionado
       $('html, body').animate({
         scrollTop: $(target).offset().top - 100
