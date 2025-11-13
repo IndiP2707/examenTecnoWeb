@@ -30,18 +30,42 @@
         }
       }
       ?>
-          <ul class="dropdown-menu">
+      <!-- ESTO LO PUEDO MODIFICAR PARA QUE ESTE EN LA LUPA  COMO EL MAS-->
+          <!--<ul class="dropdown-menu">
             <li><a href="#">Acerca de</a></li>
             <li><a href="#">Extras</a></li>
             <li><a href="#">Equipo</a></li> 
           </ul>
+        </li>-->
+    <!--icono de lupa
+        <li><a href="#" id="lupa-btn">
+       <span class="glyphicon glyphicon-search"></span></a>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+        -->
+        <li class="dropdown">
+    <a href="#" id="lupa-btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-search"></span> 
+    </a>
+    
+    <ul class="dropdown-menu" id="lupa-dropdown-menu">
+        <?php
+        // Usa la variable cargada por el controlador: $seccioneslupa
+        if(!empty($seccioneslupa)){ 
+            foreach($seccioneslupa as $itemLupa){
+        ?>
+                <li><a href="<?=$itemLupa->href?>"><?=$itemLupa->nombre_seccion?></a></li>
+        <?php
+            }
+        }
+        ?>
+    </ul>
+</li>
       </ul>
     </div>
   </div>
 </nav>
-
+<!-- ASTA AQUI LLEGARIA CON EL # PARA LA LUPA 
+ TODO ESTO DEL MYCAROUSEL NO MOVERLO MAS-->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -135,11 +159,12 @@
   </select>
 </div>
 
-
-
+<!-- TODO ESTO DE ARRIBA NO MOVERLO-->
+<!-- LO PUEDO METER A UNA TABLA?-->
   <p><em>¡AMAMOS ENSEÑAR!</em></p>
   <p>Hemos creado una página dedicada a ofrecer cursos en distintas áreas de conocimiento. Nuestro objetivo es brindar un espacio accesible donde cualquier persona pueda aprender y desarrollar nuevas habilidades de manera práctica y dinámica. La plataforma está pensada para que el aprendizaje sea flexible, permitiendo estudiar a tu propio ritmo y desde cualquier lugar. Creemos firmemente en la importancia de la educación continua y en el poder de adquirir conocimientos que impulsen el crecimiento personal y profesional.</p>
   <!-- Cursos destacados -->
+   <!-- PONER ESTO A UNA TABLA TIPO CAT DE LOS CURSOS PARA LOS DESTACADOS-->
   <br>
   <div class="row">
     <div class="col-sm-2 col-sm-offset-1">
@@ -443,7 +468,10 @@
     </div>
   </div>
   <br>
-  <h3 class="text-center">MATERIAL DE APOYO</h3>  
+  <br>
+  <br>
+  <p><div id="material"></div></p>
+  <h3 class="text-center">MATERIAL DE APOYO</h3>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Gias Rápidas</a></li>
     <li><a data-toggle="tab" href="#menu1">Artículos</a></li>

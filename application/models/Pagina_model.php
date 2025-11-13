@@ -90,6 +90,22 @@ public function ObtenerSecciones() {
 }
 
 
+function consultar_secciones_lupa(){
+        //CONSULTA FORMA INDIVIDUAL------COMENTARIO
+        $this->db->select("Id, nombre_seccion, href, activo, registro");
+        $this->db->from("cat_secciones");
+        $this->db->where("activo","2");
+        $query=$this->db->get();
 
+        if($query!=false){
+            if($query->num_rows()>0){
+                return $query->result();
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
     
 }

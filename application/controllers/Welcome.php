@@ -100,9 +100,10 @@ class Welcome extends CI_Controller {
 
 		$datos["contenido10"]=$c10;	
 
-		$datos["secciones"]=$this->mP->consultar_secciones_activas();
-		$datos["cintaimagenes"]=$this->mP->consultar_carousel();	
+		$datos["secciones"]=$this->mP->consultar_secciones_activas(); //secciones que se muestran en navbar
+		$datos["cintaimagenes"]=$this->mP->consultar_carousel();		
 		$datos["inscripciones"] = $this->mP->consultar_inscripciones();
+		$datos["seccioneslupa"]=$this->mP->consultar_secciones_lupa();
 
 		$this->load->view('secciones/header');
 		$this->load->view('principal',$datos);
