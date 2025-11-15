@@ -107,5 +107,23 @@ function consultar_secciones_lupa(){
             return false;
         }
     }
+        //material de apoyo
+        function consultar_material(){
+            $sql="SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo FROM materialapoyo m INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id WHERE m.estatus = 1 AND c.estatus = 1";
+        /*$sql="SELECT c.id AS idcarousel, c.titulo, c.subtitulo, ci.ruta, ci.nombre_archivo, ci.alt
+        FROM carousel c INNER JOIN cat_imagenes ci ON c.idcatimagen=ci.id WHERE c.estatus=1 AND ci.estatus=1";*/
+
+        $query=$this->db->query($sql);
+        if($query!=false){
+            if($query->num_rows()>0){
+                return $query->result();
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+    }
     
 }
