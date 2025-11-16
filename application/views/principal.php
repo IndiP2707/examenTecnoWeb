@@ -17,8 +17,8 @@
         foreach($secciones as $item){
           if($item->href=="#"){
             ?>
-              <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="<?$item->href?>"><?=$item->nombre_seccion?>
+              <<li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<?=$item->href?>"><?=$item->nombre_seccion?>
               <span class="caret"></span></a>
             <?php
           }else{
@@ -36,7 +36,26 @@
             <li><a href="#">Equipo</a></li> 
           </ul>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+
+        <!--<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>-->
+        <li class="dropdown">
+    <a href="#" id="lupa-btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-search"></span> 
+    </a>
+    
+    <ul class="dropdown-menu" id="lupa-dropdown-menu">
+        <?php
+        // Usa la variable cargada por el controlador: $seccioneslupa
+        if(!empty($seccioneslupa)){ 
+            foreach($seccioneslupa as $itemLupa){
+        ?>
+                <li><a href="<?=$itemLupa->href?>"><?=$itemLupa->nombre_seccion?></a></li>
+        <?php
+            }
+        }
+        ?>
+    </ul>
+</li>
       </ul>
     </div>
   </div>

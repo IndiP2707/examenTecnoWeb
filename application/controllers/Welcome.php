@@ -25,7 +25,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		//$this->load->view('welcome_message');
+		$this->band();
 	}
 
 	public function principal() {
@@ -103,10 +104,13 @@ class Welcome extends CI_Controller {
 		$datos["secciones"]=$this->mP->consultar_secciones_activas();
 		$datos["cintaimagenes"]=$this->mP->consultar_carousel();	
 		$datos["inscripciones"] = $this->mP->consultar_inscripciones();
+		$datos["seccioneslupa"]= $this->mP->consultar_secciones_lupa();
+		//$datos["materialapoyo"] = $this->mP->consultar_material();
 
 		$this->load->view('secciones/header');
 		$this->load->view('principal',$datos);
 		$this->load->view('secciones/footer');
+		
 	}
 
 	public function ObtenerRespuesta(){

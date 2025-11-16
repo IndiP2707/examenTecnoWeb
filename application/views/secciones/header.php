@@ -144,7 +144,7 @@
     color: #000 !important;
   }
   .dropdown-menu li a:hover {
-    background-color: red !important;
+    background-color: #AD6B5C  !important;
   }
   footer {
     background-color: #5C9EAD;

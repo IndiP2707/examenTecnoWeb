@@ -88,7 +88,43 @@ public function ObtenerSecciones() {
     }
     return false;
 }
+function consultar_secciones_lupa(){
+        //CONSULTA FORMA INDIVIDUAL------COMENTARIO
+        $this->db->select("Id, nombre_seccion, href, activo, registro");
+        $this->db->from("cat_secciones");
+        $this->db->where("activo","2");
+        $query=$this->db->get();
 
+        if($query!=false){
+            if($query->num_rows()>0){
+                return $query->result();
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    
+        //material de apoyo
+        /*descomentar
+        function consultar_material(){
+            $sql="SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo FROM materialapoyo m INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id WHERE m.estatus = 1 AND c.estatus = 1"; descomentar */
+        /*$sql="SELECT c.id AS idcarousel, c.titulo, c.subtitulo, ci.ruta, ci.nombre_archivo, ci.alt
+        FROM carousel c INNER JOIN cat_imagenes ci ON c.idcatimagen=ci.id WHERE c.estatus=1 AND ci.estatus=1";*/
+/*descomentar
+        $query=$this->db->query($sql);
+        if($query!=false){
+            if($query->num_rows()>0){
+                return $query->result();
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        } 
+
+    }descomentar*/
 
 
     
