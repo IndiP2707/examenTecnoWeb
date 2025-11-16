@@ -105,7 +105,7 @@ class Welcome extends CI_Controller {
 		$datos["cintaimagenes"]=$this->mP->consultar_carousel();	
 		$datos["inscripciones"] = $this->mP->consultar_inscripciones();
 		$datos["seccioneslupa"]= $this->mP->consultar_secciones_lupa();
-		//$datos["materialapoyo"] = $this->mP->consultar_material();
+		$datos["materialapoyo"] = $this->mP->consultar_material();
 
 		$this->load->view('secciones/header');
 		$this->load->view('principal',$datos);
