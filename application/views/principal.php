@@ -17,7 +17,7 @@
         foreach($secciones as $item){
           if($item->href=="#"){
             ?>
-              <<li class="dropdown">
+              <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="<?=$item->href?>"><?=$item->nombre_seccion?>
               <span class="caret"></span></a>
             <?php

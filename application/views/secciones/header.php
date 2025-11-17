@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Cursos Online Pro</title>
+  <title>Bootstrap Theme The Band</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -10,21 +10,26 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  <!-- SELECT2-->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+      <!-- SELECT2-->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"rel="stylesheet">
   
   
-  <style>
+      <!-- SELECT2
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>-->
+
+
+ <style>
   body {
     font: 400 15px/1.8 Lato, sans-serif;
     color: #777;
+    overflow-x: hidden;
   }
   h3, h4 {
     margin: 10px 0 30px 0;
     letter-spacing: 10px;      
-    font-size: 20px;
+    font-size: 20px; 
     color: #111;
   }
   .container {
@@ -38,11 +43,11 @@
     opacity: 0.7;
   }
   .person:hover {
-    border-color:#27474E;
+    border-color: #27474E;
   }
   .carousel-inner img {
     /*-webkit-filter: grayscale(90%);
-    filter: grayscale(90%); /* make all photos black and white */ 
+    filter: grayscale(90%);*/ /* make all photos black and white */ 
     width: 100%; /* Set width to 100% */
     margin: auto;
   }
@@ -55,8 +60,8 @@
     }
   }
   .bg-1 {
-    background: #5C9EAD;
     color: #ffffffff;
+    background: #5C9EAD;
   }
   .bg-1 h3 {color: #fff;}
   .bg-1 p {font-style: italic;}
@@ -84,7 +89,7 @@
     border-radius: 0;
     transition: .2s;
   }
-    .btn2 {
+  .btn2 {
     padding: 10px 20px;
     background-color: #AD6B5C;
     color: #f1f1f1;
@@ -144,10 +149,10 @@
     color: #000 !important;
   }
   .dropdown-menu li a:hover {
-    background-color: #AD6B5C  !important;
+    background-color: #AD6B5C !important;
   }
   footer {
-    background-color: #5C9EAD;
+    background-color: #5c9ead;
     color: #f5f5f5;
     padding: 32px;
   }
@@ -165,7 +170,7 @@
     resize: none;
   }
 
-  #myCarousel2 .carousel-inner {
+#myCarousel2 .carousel-inner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +203,5 @@
 .js-example-basic-single {
   width: 100% !important;
 }
-
-
   </style>
 </head>

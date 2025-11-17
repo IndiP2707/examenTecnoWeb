@@ -90,7 +90,7 @@ function MostrarRespuesta(){
         window.location.href = enlace;
       }
     });
-  //});
+  });
   /*/select2 lupa
  $(document).ready(function(){ 
     $('#BuscarLupa').select2({
@@ -108,10 +108,11 @@ function MostrarRespuesta(){
             window.location.href = enlace;
         }
     });
-});*/
+});
   
 });
+*/
 
-</scrip>
+</script>
 
 </html>
