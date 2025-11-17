@@ -18,7 +18,7 @@
           if($item->href=="#"){
             ?>
               <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="<?$item->href?>"><?=$item->nombre_seccion?>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<?=$item->href?>"><?=$item->nombre_seccion?>
               <span class="caret"></span></a>
             <?php
           }else{
@@ -36,7 +36,26 @@
             <li><a href="#">Equipo</a></li> 
           </ul>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+
+        <!--<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>-->
+        <li class="dropdown">
+    <a href="#" id="lupa-btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-search"></span> 
+    </a>
+    
+    <ul class="dropdown-menu" id="lupa-dropdown-menu">
+        <?php
+        // Usa la variable cargada por el controlador: $seccioneslupa
+        if(!empty($seccioneslupa)){ 
+            foreach($seccioneslupa as $itemLupa){
+        ?>
+                <li><a href="<?=$itemLupa->href?>"><?=$itemLupa->nombre_seccion?></a></li>
+        <?php
+            }
+        }
+        ?>
+    </ul>
+</li>
       </ul>
     </div>
   </div>
@@ -383,7 +402,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
+          <button type="button" class="close" data-dismiss="modal">x</button>
           <h4><span class="glyphicon glyphicon-lock"></span>PAGO</h4>
         </div>
         <div class="modal-body">
@@ -443,6 +462,7 @@
     </div>
   </div>
   <br>
+  <!-- COMENTO EL MATERIAL DE APOYO
   <h3 class="text-center">MATERIAL DE APOYO</h3>  
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Gias Rápidas</a></li>
@@ -476,9 +496,77 @@
       <a href="https://www.youtube.com/c/Programaci%C3%B3nATS" target="_blank">canales especializados en programación</a><br>
       <a href="https://www.youtube.com/@freecodecampes" target="_blank">recursos gratis para ayudarte a aprender a programar.</a>
     </div>
-  </div>
+  </div>CIERRO EL MATERIAL DE APOYO --> 
+  <!-- COOODIGO DE LA CARGA DEL MATERIAL DE APOYO DE LA BASE DE DATOS-->
+      <p><div id="material" class ="container"></div></p>
+<h3 class="text-center nav nav-tabs">MATERIAL DE APOYO</h3>
+<?php
+//  AGRUPAR LOS DATOS por el campo 'href' (#home, #menu1, etc.)
+$categorias = [];
+if (!empty($materialapoyo)) {
+    foreach ($materialapoyo as $item) {
+        $href = $item->href;
+        // esto es para cada menu
+        if (!isset($categorias[$href])) {
+            $categorias[$href] = [
+                'tituloma' => $item->tituloma,
+                'titulo' => $item->titulo,
+                'subtitulo' => $item->subtitulo,
+                'recursos' => [], // Aquí van los enlaces que se guardan de las categorias
+            ];
+        } 
+        // Agregar el recurso a la categoría
+        $categorias[$href]['recursos'][] = [
+            'ruta' => $item->ruta,
+            'boton' => $item->boton,
+        ];
+    }
+}
+// Mensaje si no hay datos
+if (empty($categorias)) {
+    echo '<p class="text-center">No hay material de apoyo disponible en este momento.</p>';
+}
+?>
+<ul class="nav nav-tabs">
+    <?php $i = 0; ?>
+    <?php foreach ($categorias as $href => $data): ?>
+        <?php
+            // El primer elemento debe tener la clase 'active'
+            $active_class = ($i == 0) ? 'active' : '';
+        ?>
+        <li class="<?php echo $active_class; ?>">
+            <a data-toggle="tab" href="<?php echo $href; ?>">
+                <?php echo $data['tituloma']; ?>
+            </a>
+        </li>
+    <?php $i++; ?>
+    <?php endforeach; ?>
+</ul>
+<div class="tab-content">
+    <?php $i = 0; ?>
+    <?php foreach ($categorias as $href => $data): ?>
+        <?php
+            // El primer panel debe tener las clases 'in active'
+            $active_class = ($i == 0) ? 'in active' : '';
+            // El ID del panel es el href sin el #
+            $panel_id = str_replace('#', '', $href);
+        ?>
+        <div id="<?php echo $panel_id; ?>" class="tab-pane fade <?php echo $active_class; ?>">
+            <h2><?php echo $data['titulo']; ?></h2>
+            <p><?php echo $data['subtitulo']; ?></p>
+            
+            <?php foreach ($data['recursos'] as $recurso): ?>
+                <a href="<?php echo $recurso['ruta']; ?>" target="_blank">
+                    <?php echo $recurso['boton']; ?>
+                </a>
+                <br>
+            <?php endforeach; ?>
+        </div>
+    <?php $i++; ?>
+    <?php endforeach; ?>
 </div>
-
+</div><!--NO MOVER ESTE CIERRE  --> 
+   
 <!-- Container (certificacion) -->
 
 <div id="certificaciones" class="container text-center">

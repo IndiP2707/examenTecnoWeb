@@ -76,7 +76,7 @@ function MostrarRespuesta(){
   });
 }
 
-  //SELECT2
+  //SELECT2 cursos
   $(document).ready(function() {
     $('.js-example-basic-single').select2({
       placeholder: "Selecciona o busca una sección",
@@ -91,8 +91,27 @@ function MostrarRespuesta(){
       }
     });
   });
+  /*/select2 lupa
+ $(document).ready(function(){ 
+    $('#BuscarLupa').select2({
+        placeholder: "BUSCAR",
+        allowClear: true
+    });
+    $('#lupa-btn').on('click', function(e){ 
+        e.preventDefault();
+        $('#BuscarLupa').select2('open');
+    });
 
-
+    $('#BuscarLupa').on('change', function(){
+        var hash = $(this).val(); 
+        if(enlace && enlace !== "#"){
+            window.location.href = enlace;
+        }
+    });
+});
+  
+});
+*/
 
 </script>
 
