@@ -38,8 +38,8 @@
   .person {
     border: 10px solid transparent;
     margin-bottom: 25px;
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
     opacity: 0.7;
   }
   .person:hover {
@@ -48,7 +48,7 @@
   .carousel-inner img {
     /*-webkit-filter: grayscale(90%);
     filter: grayscale(90%);*/ /* make all photos black and white */ 
-    width: 100%; /* Set width to 100% */
+    width: 50%; /* Set width to 100% */
     margin: auto;
   }
   .carousel-caption h3 {
