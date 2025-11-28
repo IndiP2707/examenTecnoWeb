@@ -47,9 +47,11 @@
     border-color: #27474E;
   }
   .carousel-inner img {
-  /*-webkit-filter: grayscale(90%);
-  filter: grayscale(90%);*/ /* make all photos black and white */ 
-  width: 50%; /* Set width to 100% */
+  -webkit-filter: grayscale(90%);
+  filter: grayscale(40%);
+  width: 50%;
+  height: 700px;
+  object-fit: cover; /* cover para recortar o contain para mostrar completo */
   margin: auto;
 }
   .carousel-caption h3 {
@@ -85,7 +87,7 @@
   }
   .btn {
     padding: 10px 20px;
-    background-color: #5C9EAD;
+    background-color: #AD6B5C;
     color: #f1f1f1;
     border-radius: 0;
     transition: .2s;

@@ -120,8 +120,8 @@
       <p><em>¡AMAMOS ENSEÑAR!</em></p>
       <p>Hemos creado una página dedicada a ofrecer cursos en distintas áreas de conocimiento. Nuestro objetivo es brindar un espacio accesible donde cualquier persona pueda aprender y desarrollar nuevas habilidades de manera práctica y dinámica. La plataforma está pensada para que el aprendizaje sea flexible, permitiendo estudiar a tu propio ritmo y desde cualquier lugar. Creemos firmemente en la importancia de la educación continua y en el poder de adquirir conocimientos que impulsen el crecimiento personal y profesional.</p>
       <!--Aqui inicia el filtrado de los cursos-->
-      <div id="divselect2categorias" class="container" style="margin-top:20px; max-width:1000px; width: 100%">
-        <select id="select2categorias" class="js-example-basic-single" name="categoria">
+      <div id="divselect2categorias" class="container text-center" style="margin-top:20px; max-width:1000px; width: 100%">
+        <select id="select2categorias" class="js-example-basic-single" name="categoria" style="width: 100%; max-width: 600px;">
         <option></option>
         <!--<option value="Programacion">Programación1</option>-->
         <option value="programacion">Programación</option>
@@ -149,14 +149,14 @@ if (!empty($cursos)):
             $clases_finales = trim($clase_categoria . ' ' . $clase_demanda);// Clases finales: 'programacion', 'marketing demanda', etc.
             $ruta_imagen_completa = base_url($curso->ruta . '/' . $curso->nombre_archivo);// Asume que $curso->ruta y $curso->nombre_archivo vienen del JOIN con la tabla 'imagenes'.
         ?> 
-        <div class="col-sm-4 curso <?= $clases_finales ?>">
+        <div class="col-sm-4 curso col-sm-offset-1 <?= $clases_finales ?>">
             <div class="thumbnail" >
                 <p><strong><?= $curso->nombre_curso ?></strong></p>
                 <img class="img-circle person" src="<?= $ruta_imagen_completa ?>" alt="<?= $curso->alt ?>" width="255" height="255" >
                 <p><small><?= $curso->subtitulo ?></small></p>
                 
                 <div class="botones_curso">
-                    <button class="btn2 btn-lg" onclick="window.location.href='#Inscripciones'">Inscríbete</button>
+                    <button class="btn btn-lg btn-outline-dark" onclick="window.location.href='#Inscripciones'">Inscríbete</button>
                 </div>
             </div>
         </div>
@@ -282,7 +282,7 @@ if (!empty($cursos)):
   <div class="container">
     <h3 class="text-center">INSCRIPCIONES</h3>
     <p class="text-center">¡Inscríbete ya!<br> CUPOS POR CURSO</p>
-        <button class="btn btn-lg btn-outline-dark" data-toggle="modal" onclick="MostrarListado()">VER CURSOS</button>
+        <button class="btn btn-lg btn-outline-dark.btn-lg.btn-sm" data-toggle="modal" onclick="MostrarListado()">VER CURSOS</button>
       </div>
 
       <div id="contenido_respuesta" class="container" style="display:none">
@@ -320,7 +320,7 @@ if (!empty($cursos)):
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
             <span class="glyphicon glyphicon-remove"></span> Cancel
           </button>
-          <p>Need <a href="#">help?</a></p>
+          <p>Need <a  data-dismiss="modal"href="#contact">help?</a></p>
         </div>
       </div>
     </div>
@@ -330,7 +330,7 @@ if (!empty($cursos)):
 <div id="contact" class="container">
   <h3 class="text-center">CONTACTO</h3> 
   <div id="divcontactoselect2" class="container" style="margin-top:20px; max-width:1000px; width: 100%">
-    <select id="select2contacto" class="js-example-basic-single" name="contact">
+    <select id="select2contacto" class="js-example-basic-single" name="contact"style="width: 100%; max-width: 600px;">
       <option value="contacto">Contacto</option>  <!-- Esta es la opción por defecto -->
       <option value="dudas">Dudas</option>
       <option value="preguntas">Preguntas</option>
@@ -464,7 +464,8 @@ if (!empty($cursos)):
     ?>
     <?php foreach ($data['recursos'] as $recurso): ?>
       <a href="<?php echo $recurso['ruta']; ?>" target="_blank">
-        <?php echo $icono_html;?>
+        <?php echo $icono_html;
+        ?>
         <?php echo $recurso['boton']; ?>
       </a>
       <br>
@@ -476,28 +477,25 @@ if (!empty($cursos)):
 </div><!--NO MOVER ESTE CIERRE  --> 
 <!-- Container (certificacion) -->
 
-<div id="certificaciones" class="container-fluid text-center" >
+<div id="certificaciones" class="container-fluid text-center">
   <h3>CERTIFICACIONES</h3>
   <p><em>¡Al finalizar cada curso obtendrás un certificado avalado por nuestra academia!</em></p>
   <p>Algunos de ellos son ...</p><br>
   <div class="row">
     <div class="col-sm-4">
-
-      <a href="#demo" data-toggle="collapse">
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
         <img src="<?=base_url()?>assets/imagenes/IA.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Inteligencia Artificial <br>y Machine Learning</strong></p><br>
     </div>
     <div class="col-sm-4">
-
-      <a href="#demo2" data-toggle="collapse">
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
         <img src="<?=base_url()?>assets/imagenes/seguridad.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Ciberseguridad y <br>Privacidad de Datos</strong></p><br>
     </div>
     <div class="col-sm-4">
-  
-      <a href="#demo3" data-toggle="collapse">
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
         <img src="<?=base_url()?>assets/imagenes/python.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Programación <br>Web Full Stack</strong></p><br>
@@ -512,14 +510,14 @@ if (!empty($cursos)):
 
   <div class="row text-center">
     <div class="col-sm-4">
-      <div class="thumbnail person">
+      <div class="thumbnail">
         <img src="<?=base_url()?>assets/imagenes/google.jpg" alt="Google">
         <p><strong>Google for Education</strong></p>
         <p>Nuestros cursos están alineados con las herramientas y certificaciones de Google, para que los estudiantes apliquen sus conocimientos en entornos reales de trabajo.</p>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
+    <div class="col-sm-4 ">
+      <div class="thumbnail ">
         <img src="<?=base_url()?>assets/imagenes/microsoft.jpg" alt="Microsoft" width="400" height="300">
         <p><strong>Microsoft Learn</strong></p>
         <p>En alianza con Microsoft ofrecemos capacitación en herramientas de productividad, nube y análisis de datos.</p>
@@ -605,8 +603,7 @@ if (!empty($cursos)):
 
 
 <!-- Image of location/map -->
-<img src="<?=base_url()?>assets/imagenes/map.jpg" class="img-responsive" style="width:100%">
-
+ 
 
 <!--SELECT2-->
 <script>
