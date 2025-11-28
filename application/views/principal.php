@@ -483,19 +483,19 @@ if (!empty($cursos)):
   <p>Algunos de ellos son ...</p><br>
   <div class="row">
     <div class="col-sm-4">
-      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank"> 
         <img src="<?=base_url()?>assets/imagenes/IA.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Inteligencia Artificial <br>y Machine Learning</strong></p><br>
     </div>
     <div class="col-sm-4">
-      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">
         <img src="<?=base_url()?>assets/imagenes/seguridad.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Ciberseguridad y <br>Privacidad de Datos</strong></p><br>
     </div>
     <div class="col-sm-4">
-      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">  <!-- Cambia aquí -->
+      <a href="<?=base_url()?>assets/imagenes/certificacion.pdf" target="_blank">
         <img src="<?=base_url()?>assets/imagenes/python.jpg" class="img-circle person" alt="Certificados">
       </a>
       <p class="text-center"><strong>Certificado en Programación <br>Web Full Stack</strong></p><br>
