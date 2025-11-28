@@ -328,111 +328,151 @@ if (!empty($cursos)):
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container">
-<h3 class="text-center">CONTACTO</h3> 
-<div id="divcontactoselect2" class="container" style="margin-top:20px; max-width:1000px; width: 100%">
+  <h3 class="text-center">CONTACTO</h3> 
+  <div id="divcontactoselect2" class="container" style="margin-top:20px; max-width:1000px; width: 100%">
     <select id="select2contacto" class="js-example-basic-single" name="contact">
-    <option>Seleccionar 1</option>
-    <option value="programacion">Dudas</option>
-    <option value="marketing">Preguntas</option>
-    <option value="contabilidad">Contacto</option>
+      <option value="contacto">Contacto</option>  <!-- Esta es la opción por defecto -->
+      <option value="dudas">Dudas</option>
+      <option value="preguntas">Preguntas</option>
     </select>
-</div> 
-<!--<p class="text-center"><em>Dudas, preguntas. Contactate con nosotros!</em></p>-->
+  </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <p>Envianos un mensaje</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Mexico, MX</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Teléfono: +55 9996453689</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: CursosOnlinePro@gmail.com</p>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Nombre" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
+  <!-- Contenido para "Contacto" (visible por defecto) -->
+  <div id="contenido-contacto" class="contenido-activo">
+    <div class="row">
+      <div class="col-md-4">
+        <p>Envianos un mensaje</p>
+        <p><span class="glyphicon glyphicon-map-marker"></span>Mexico, MX</p>
+        <p><span class="glyphicon glyphicon-phone"></span>Teléfono: +55 9996453689</p>
+        <p><span class="glyphicon glyphicon-envelope"></span>Email: CursosOnlinePro@gmail.com</p>
       </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comentarios" rows="5"></textarea>
-      <br>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Enviar</button>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Nombre" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comentarios" rows="5"></textarea>
+        <br>
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <button class="btn pull-right" type="submit">Enviar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <!-- COOODIGO DE LA CARGA DEL MATERIAL DE APOYO DE LA BASE DE DATOS-->
-      <p><div id="material" class ="container-fluid"></div></p>
-<h3 class="text-center nav nav-tabs">MATERIAL DE APOYO</h3>
-<?php
-//  AGRUPAR LOS DATOS por el campo 'href' (#home, #menu1, etc.)
-$categorias = [];
-if (!empty($materialapoyo)) {
-    foreach ($materialapoyo as $item) {
-        $href = $item->href;
-        // esto es para cada menu
-        if (!isset($categorias[$href])) {
-            $categorias[$href] = [
-                'tituloma' => $item->tituloma,
-                'titulo' => $item->titulo,
-                'subtitulo' => $item->subtitulo,
-                'recursos' => [], // Aquí van los enlaces que se guardan de las categorias
-            ];
-        } 
-        // Agregar el recurso a la categoría
-        $categorias[$href]['recursos'][] = [
-            'ruta' => $item->ruta,
-            'boton' => $item->boton,
-        ];
-    }
-}
-// Mensaje si no hay datos
-if (empty($categorias)) {
-    echo '<p class="text-center">No hay material de apoyo disponible en este momento.</p>';
-}
-?>
-<ul class="nav nav-tabs">
-    <?php $i = 0; ?>
-    <?php foreach ($categorias as $href => $data): ?>
-        <?php
-            // El primer elemento debe tener la clase 'active'
-            $active_class = ($i == 0) ? 'active' : '';
-        ?>
-        <li class="<?php echo $active_class; ?>">
-            <a data-toggle="tab" href="<?php echo $href; ?>">
-                <?php echo $data['tituloma']; ?>
-            </a>
-        </li>
-    <?php $i++; ?>
-    <?php endforeach; ?>
-</ul>
-<div class="tab-content">
-    <?php $i = 0; ?>
-    <?php foreach ($categorias as $href => $data): ?>
-        <?php
-            // El primer panel debe tener las clases 'in active'
-            $active_class = ($i == 0) ? 'in active' : '';
-            // El ID del panel es el href sin el #
-            $panel_id = str_replace('#', '', $href);
-        ?>
-        <div id="<?php echo $panel_id; ?>" class="tab-pane fade <?php echo $active_class; ?>">
-            <h2><?php echo $data['titulo']; ?></h2>
-            <p><?php echo $data['subtitulo']; ?></p>
-            
-            <?php foreach ($data['recursos'] as $recurso): ?>
-                <a href="<?php echo $recurso['ruta']; ?>" target="_blank">
-                    <?php echo $recurso['boton']; ?>
-                </a>
-                <br>
-            <?php endforeach; ?>
+
+  <!-- Contenido para "Dudas" (oculto por defecto) -->
+  <div id="contenido-dudas" class="contenido-oculto">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Dudas Frecuentes</h4>
+        <p>¿Tienes dudas sobre nuestros cursos? Aquí respondemos las más comunes:</p>
+        <ul>
+          <li><strong>¿Cómo me inscribo?</strong> Haz clic en "Inscríbete" en la página de cursos.</li>
+          <li><strong>¿Los cursos son gratuitos?</strong> No, tienen un costo de $1500 por persona.</li>
+          <li><strong>¿Puedo acceder desde móvil?</strong> Sí, la plataforma es responsive.</li>
+        </ul>
+        <p>Si no encuentras tu respuesta, envíanos un email a CursosOnlinePro@gmail.com.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido para "Preguntas" (oculto por defecto) -->
+  <div id="contenido-preguntas" class="contenido-oculto">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Formulario de Preguntas</h4>
+        <p>¿Tienes preguntas específicas? Llena este formulario y te responderemos pronto.</p>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name-pregunta" name="name" placeholder="Tu Nombre" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email-pregunta" name="email" placeholder="Tu Email" type="email" required>
+          </div>
         </div>
+        <textarea class="form-control" id="pregunta" name="pregunta" placeholder="Escribe tu pregunta aquí" rows="5"></textarea>
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <button class="btn pull-right" type="submit">Enviar Pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- COOODIGO DE LA CARGA DEL MATERIAL DE APOYO DE LA BASE DE DATOS-->
+<div class="container">
+  <div id="material"></div>
+  <h3 class="text-center nav nav-tabs" >MATERIAL DE APOYO</h3>
+  <?php
+  $categorias = [];
+  if (!empty($materialapoyo)) {
+    foreach ($materialapoyo as $item) {
+      $href = $item->href;
+      if (!isset($categorias[$href])) {
+        $categorias[$href] = [
+          'tituloma' => $item->tituloma,
+          'titulo' => $item->titulo,
+          'subtitulo' => $item->subtitulo,
+          'icono_clase' => $item->icono_clase,
+          'recursos' => [],
+        ];
+      } 
+      $categorias[$href]['recursos'][] = [
+        'ruta' => $item->ruta,
+        'boton' => $item->boton,
+      ];
+    }
+  }
+  if (empty($categorias)) {
+    echo '<p class="text-center">No hay material de apoyo disponible en este momento.</p>';
+  }
+  ?>
+  <ul class="nav nav-tabs">
+    <?php $i = 0; ?>
+    <?php foreach ($categorias as $href => $data): ?>
+    <?php
+    $active_class = ($i == 0) ? 'active' : '';
+    ?>
+    <li class="<?php echo $active_class; ?>">
+      <a data-toggle="tab" href="<?php echo $href; ?>">
+        <?php echo $data['tituloma']; ?>
+      </a>
+    </li>
     <?php $i++; ?>
     <?php endforeach; ?>
-</div>
+  </ul>
+  <div class="tab-content">
+    <?php $i = 0; ?>
+    <?php foreach ($categorias as $href => $data): ?>
+    <?php
+    $active_class = ($i == 0) ? 'in active' : '';
+    $panel_id = str_replace('#', '', $href);
+    ?>
+    <div id="<?php echo $panel_id; ?>" class="tab-pane fade <?php echo $active_class; ?>">
+      <h2><?php echo $data['titulo']; ?></h2>
+    <p><?php echo $data['subtitulo']; ?></p>
+    <?php
+    $icono_clase = $data['icono_clase'];
+    $icono_html = !empty($icono_clase) ? '<i class="' . $icono_clase . '" aria-hidden="true"></i> ' : '';
+    ?>
+    <?php foreach ($data['recursos'] as $recurso): ?>
+      <a href="<?php echo $recurso['ruta']; ?>" target="_blank">
+        <?php echo $icono_html;?>
+        <?php echo $recurso['boton']; ?>
+      </a>
+      <br>
+      <?php endforeach; ?>
+    </div>
+    <?php $i++; ?>
+    <?php endforeach; ?>
+  </div>
 </div><!--NO MOVER ESTE CIERRE  --> 
 <!-- Container (certificacion) -->
 

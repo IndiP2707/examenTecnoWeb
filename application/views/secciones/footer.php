@@ -165,6 +165,28 @@ $(document).ready(function() {
           }, 600);
         }
     });
+    // Inicialización del Select2 para contacto (si no está ya)
+$('#select2contacto').select2({
+  placeholder: "Selecciona una opción",
+  allowClear: true
+});
+
+// Lógica para cambiar el contenido al seleccionar una opción
+$('#select2contacto').on('change', function() {
+  var opcionSeleccionada = $(this).val();  // Obtiene el valor seleccionado (ej: "contacto", "dudas", "preguntas")
+
+  // Oculta todos los contenidos primero
+  $('.contenido-activo').removeClass('contenido-activo').addClass('contenido-oculto');
+
+  // Muestra el contenido correspondiente
+  if (opcionSeleccionada === 'contacto') {
+    $('#contenido-contacto').removeClass('contenido-oculto').addClass('contenido-activo');
+  } else if (opcionSeleccionada === 'dudas') {
+    $('#contenido-dudas').removeClass('contenido-oculto').addClass('contenido-activo');
+  } else if (opcionSeleccionada === 'preguntas') {
+    $('#contenido-preguntas').removeClass('contenido-oculto').addClass('contenido-activo');
+  }
+});
 });
 
 </script>

@@ -13,6 +13,7 @@
       <!-- SELECT2-->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   
       <!-- SELECT2
@@ -46,11 +47,11 @@
     border-color: #27474E;
   }
   .carousel-inner img {
-    /*-webkit-filter: grayscale(90%);
-    filter: grayscale(90%);*/ /* make all photos black and white */ 
-    width: 50%; /* Set width to 100% */
-    margin: auto;
-  }
+  /*-webkit-filter: grayscale(90%);
+  filter: grayscale(90%);*/ /* make all photos black and white */ 
+  width: 50%; /* Set width to 100% */
+  margin: auto;
+}
   .carousel-caption h3 {
     color: #fff !important;
   }
@@ -202,6 +203,13 @@
 /*SELECT2*/
 .js-example-basic-single {
   width: 100% !important;
+}
+/* Estilos para mostrar/ocultar contenidos en la sección de contacto */
+.contenido-activo {
+  display: block;  /* Muestra el contenido */
+}
+.contenido-oculto {
+  display: none;  /* Oculta el contenido */
 }
   </style>
 </head>

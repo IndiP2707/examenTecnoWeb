@@ -89,21 +89,25 @@ function consultar_secciones_lupa(){
     
         //material de apoyo
         
-        function consultar_material(){
-            $sql="SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo FROM materialapoyo m INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id WHERE m.estatus = 1 AND c.estatus = 1";
-
-        $query=$this->db->query($sql);
-        if($query!=false){
-            if($query->num_rows()>0){
-                return $query->result();
-            }else{
-                return false;
-            }
-        }else{
+function consultar_material(){
+    // Define $sql correctamente (asegúrate de que no haya saltos de línea en la cadena)
+    $sql = "SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo, c.icono_clase 
+            FROM materialapoyo m 
+            INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id 
+            WHERE m.estatus = 1 AND c.estatus = 1";
+    
+    $query = $this->db->query($sql);
+    
+    if ($query !== false) {
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
             return false;
-        } 
-
+        }
+    } else {
+        return false;
     }
+}
 function consultar_cursos_filtrados(){
     $sql="SELECT
                 ci.nombre_curso,
