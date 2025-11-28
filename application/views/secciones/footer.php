@@ -34,6 +34,11 @@ $(document).ready(function(){
       });
     } // End if
   });
+    /*ESTO ES PARA EL SELECT2 DE LAS CATEGORIAS
+   $('.js-example-basic-single').select2()({
+    placeholder:'Seleccionar una categoria',
+    allowClear: true
+   });*/
 })
 
 function MostrarRespuesta(){
@@ -75,43 +80,114 @@ function MostrarRespuesta(){
     console.log(datos);
   });
 }
+$(document).ready(function() {
 
-  //SELECT2 cursos
-  $(document).ready(function() {
-    $('.js-example-basic-single').select2({
-      placeholder: "Selecciona o busca una sección",
-      allowClear: true
-    });
-
-    //Para redirigir al seleccionar una opción:
-    $('#secciones').on('change', function() {
-      var enlace = $(this).val();
-      if (enlace && enlace !== "#") {
-        window.location.href = enlace;
-      }
-    });
-  });
-  /*/select2 lupa
- $(document).ready(function(){ 
-    $('#BuscarLupa').select2({
-        placeholder: "BUSCAR",
-        allowClear: true
-    });
-    $('#lupa-btn').on('click', function(e){ 
-        e.preventDefault();
-        $('#BuscarLupa').select2('open');
+    // Inicialización de Select2 de Categorías
+    $('#select2categorias').select2({
+        placeholder: "Buscar Curso",
+        allowClear: true 
     });
 
-    $('#BuscarLupa').on('change', function(){
-        var hash = $(this).val(); 
-        if(enlace && enlace !== "#"){
-            window.location.href = enlace;
+    // Alias para contenedores
+    var originalLayout = $("#cursos-original-layout");
+    var cursosContainer = $("#cursos-container");
+    var msgDiv = $("#temp-message"); 
+
+    // Lógica Inicial
+    msgDiv.hide(); 
+    cursosContainer.hide();
+    originalLayout.show(); // El layout estático se muestra por defecto.
+
+
+    // Lógica de Filtrado al cambiar el Select2
+    $('#select2categorias').on('change', function() {
+        var filter = $(this).val(); 
+        
+        $(".curso").hide(300); // Ocultar todas las tarjetas dinámicas
+        
+        // Comportamiento SIN selección (Muestra el layout estático)
+        if (!filter) { 
+            cursosContainer.hide(300);
+            originalLayout.show(300);
+            return; 
+        }
+        
+        // Comportamiento CON selección (Muestra el dinámico y filtra)
+        originalLayout.hide(300);
+        msgDiv.hide();
+        cursosContainer.show(300);
+        
+        if (filter === "demanda") {
+            $(".demanda").show(300); 
+        } else {
+            $("." + filter).show(300);
         }
     });
-});
-  
-});
+
+    // --- LÓGICA DE BOTONES Y OTROS SELECT2 AQUÍ ---
+    
+    /* Botón 'Información' (Modal)
+    $(".btn-informacion").click(function(){
+        var curso = $(this).data("curso");
+        // Lógica JSON del modal...
+    });
+
+    // Botón 'Inscríbete' (Modal Formulario)
+    $(".btn-inscribete-form").click(function(){
+        var curso = $(this).data("curso");
+        $("#curso-seleccionado").val(curso); 
+    });
 */
+    // Inicialización del Select2 original de búsqueda (#buscarCurso)
+    $('#buscarCurso').select2({
+        placeholder: "Buscar curso...",
+        allowClear: true
+    });
+
+    // Llenado dinámico del Select2 #buscarCurso
+    $('.text-center strong').each(function() {
+        const nombreCurso = $(this).text().trim(); 
+        const enlace = $(this).closest('.col-sm-2, .col-sm-2.col-sm-offset-1').find('a').attr('href'); 
+
+        if (nombreCurso && enlace) {
+          $('#buscarCurso').append(new Option(nombreCurso, enlace));
+        }
+    });
+    
+    // Evento CHANGE para el Select2 #buscarCurso (manejo de collapses)
+    $('#buscarCurso').on('change', function() {
+        const target = $(this).val();
+        if (target) {
+          $('.collapse').collapse('hide');
+          $(target).collapse('show');
+          $('html, body').animate({
+            scrollTop: $(target).offset().top - 100
+          }, 600);
+        }
+    });
+    // Inicialización del Select2 para contacto (si no está ya)
+$('#select2contacto').select2({
+  placeholder: "Selecciona una opción",
+  allowClear: true
+});
+
+// Lógica para cambiar el contenido al seleccionar una opción
+$('#select2contacto').on('change', function() {
+  var opcionSeleccionada = $(this).val();  // Obtiene el valor seleccionado (ej: "contacto", "dudas", "preguntas")
+
+  // Oculta todos los contenidos primero
+  $('.contenido-activo').removeClass('contenido-activo').addClass('contenido-oculto');
+
+  // Muestra el contenido correspondiente
+  if (opcionSeleccionada === 'contacto') {
+    $('#contenido-contacto').removeClass('contenido-oculto').addClass('contenido-activo');
+  } else if (opcionSeleccionada === 'dudas') {
+    $('#contenido-dudas').removeClass('contenido-oculto').addClass('contenido-activo');
+  } else if (opcionSeleccionada === 'preguntas') {
+    $('#contenido-preguntas').removeClass('contenido-oculto').addClass('contenido-activo');
+  }
+});
+});
 
 </script>
 

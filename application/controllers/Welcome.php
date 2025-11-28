@@ -106,6 +106,7 @@ class Welcome extends CI_Controller {
 		$datos["inscripciones"] = $this->mP->consultar_inscripciones();
 		$datos["seccioneslupa"]= $this->mP->consultar_secciones_lupa();
 		$datos["materialapoyo"] = $this->mP->consultar_material();
+		$datos["cursos"] = $this->mP->consultar_cursos_filtrados();
 
 		$this->load->view('secciones/header');
 		$this->load->view('principal',$datos);

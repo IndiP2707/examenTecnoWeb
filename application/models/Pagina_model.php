@@ -57,25 +57,6 @@ class Pagina_model extends CI_Model{
         }
     }
 
-    
-    /*function ObtenerSecciones(){
-        $this->db->select("Id, nombre_curso, fecha_inicio, cupos, id_imagen, estatus");
-        $this->db->from("cat_inscripciones");
-        $this->db->where("estatus","1");
-        $query=$this->db->get();
-        
-        if($query!=false){
-            if($query->num_rows()>0){
-                return $query->result();
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-
-    }*/
-
 public function ObtenerSecciones() {
     $this->db->select("cat_inscripciones.Id, cat_inscripciones.nombre_curso, cat_inscripciones.fecha_inicio, cat_inscripciones.cupos, cat_inscripciones.id_imagen, cat_inscripciones.estatus, cat_imagenes.ruta, cat_imagenes.nombre_archivo, cat_imagenes.alt");
     $this->db->from("cat_inscripciones");
@@ -108,24 +89,52 @@ function consultar_secciones_lupa(){
     
         //material de apoyo
         
-        function consultar_material(){
-            $sql="SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo FROM materialapoyo m INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id WHERE m.estatus = 1 AND c.estatus = 1";
-        /*$sql="SELECT c.id AS idcarousel, c.titulo, c.subtitulo, ci.ruta, ci.nombre_archivo, ci.alt
-        FROM carousel c INNER JOIN cat_imagenes ci ON c.idcatimagen=ci.id WHERE c.estatus=1 AND ci.estatus=1";*/
+function consultar_material(){
 
-        $query=$this->db->query($sql);
-        if($query!=false){
-            if($query->num_rows()>0){
+    $sql = "SELECT m.ruta, m.boton, c.tituloma, c.href, c.titulo, c.subtitulo, c.icono_clase 
+            FROM materialapoyo m 
+            INNER JOIN cat_materialapoyo c ON m.id_catmat = c.id 
+            WHERE m.estatus = 1 AND c.estatus = 1";
+    
+    $query = $this->db->query($sql);
+    
+    if ($query !== false) {
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+function consultar_cursos_filtrados(){
+    $sql="SELECT
+                ci.nombre_curso,
+                ci.subtitulo,
+                ci.demanda,
+                ci.estatus,
+                c.categoria,
+                i.ruta,
+                i.nombre_archivo,
+                i.alt
+          FROM
+              cat_inscripciones ci
+          JOIN
+              categorias c ON ci.id_categorias = c.id
+          JOIN
+              cat_imagenes i ON ci.id_imagen = i.id 
+          WHERE
+              ci.estatus >= 1";
+    $query = $this->db->query($sql);
+    if($query !== false){
+            if($query->num_rows() > 0){
                 return $query->result();
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
-        } 
-
-    }
-
-
-    
+        }
+}
 }
